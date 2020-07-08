@@ -32,7 +32,7 @@ class Main extends Component {
       <Header/>
       <Switch>
               <Route path='/home' component={HomePage} />
-            s  <Redirect to="/home" />
+              <Redirect to="/home" />
           </Switch>
           <Footer/>
       </div>

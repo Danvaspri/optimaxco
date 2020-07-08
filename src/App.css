@@ -32,11 +32,45 @@ address{
 .navbar-light {
   background-color:white;
   color:black;
+  font-family: inherit;
+  font-size: 0.7em;
+  margin-bottom: 0;
+  font-weight: bold;
+ 
 
 }
-#navbarid{
-  font-family: inherit;
-  font-size: 1em;
-  margin-bottom: 0;
-  font-weight: 600;
+
+
+
+
+.bg {
+  /* The image used */
+  background-image: url("edits-24.JPG");
+
+  /* Full height */
+   
+  height: 600px;
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+.bg h1 {
+  color:white;
+  font-family: inherit;
+  font-size: 3.3em;
+  padding-top: 35%;
+  text-align: center;
+  align-self: center;
+  font-weight: bold;
+  }
+  .row h1{
+    color:#23A455;
+    padding: 1em 0px 1em 1em;
+  }
+  
+  .card button{
+    background: #23a455 ;
+    color:white;
+  }
