@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, CardGroup, CardFooter, Media
+    CardTitle, CardSubtitle, Button, CardGroup, CardFooter,  CardDeck
   } from 'reactstrap';
 function Home(props) {
     function changeBorder(e) {
@@ -10,9 +10,12 @@ function Home(props) {
       function changeBack(e) {
         e.target.style.borderColor = '';
       }
-    
+
+     
+      
     return(
-  
+        
+       
 <body>
 <div className=" bg">
     <h1 >Más por tus ojos</h1>
@@ -22,7 +25,7 @@ function Home(props) {
 <div className="row col-12"><h1>Servicios</h1></div>
     <div className="row row-content">
  
-        <div  className="col-12 col-md-4 mt-2 mb-2">
+        <CardDeck>
             <Card  onMouseOver={changeBorder} onMouseLeave={changeBack}>
                 <CardBody className="text-center" >
                 <span className="fa fa-tags"></span>
@@ -31,8 +34,7 @@ function Home(props) {
                 </CardBody>
                 <Button className="mb-5 ml-5 mr-5">CONOCE MÁS</Button>
             </Card>
-            </div>
-        <div className="col-12 col-md-4 mt-2 mb-2" >
+
        
             <Card  onMouseOver={changeBorder} onMouseLeave={changeBack}>
                 <CardBody  className="text-center">
@@ -44,8 +46,7 @@ function Home(props) {
                 </CardBody>
               <Button className="mb-5 ml-5 mr-5">CONOCE MÁS</Button>
             </Card>
-        </div>
-        <div className="col-12 col-md-4 mt-2 mb-4">
+       
             <Card  onMouseOver={changeBorder} onMouseLeave={changeBack} >
               
                 <CardBody className="text-center">
@@ -56,7 +57,8 @@ function Home(props) {
                 </CardBody>
                 <Button className="mb-5 ml-5 mr-5">CONOCE MÁS</Button>
             </Card>
-            </div>
+            </CardDeck>
+          
         
 
       
@@ -93,8 +95,8 @@ function Home(props) {
         
         <div className="row row-content">
        
-       <CardGroup>
-        <div className="col-12 col-md-4 mt-2 mb-4">
+       <CardDeck>
+       
             <Card >
               
                 <CardBody onMouseOver={changeBorder} onMouseOut={changeBack} >
@@ -104,12 +106,11 @@ function Home(props) {
                         no han presentado ningún inconveniente. Totalmente recomendado."
                     </CardText>
                 </CardBody>
-                <CardTitle>Sebastián Benavides</CardTitle>
+                <CardTitle><h5>Sebastián Benavides</h5></CardTitle>
                 <CardSubtitle>Cliente frecuente</CardSubtitle>
         
             </Card>
-            </div>
-            <div className="col-12 col-md-4 mt-2 mb-4">
+   
             <Card  >
                
                 <CardBody>
@@ -120,12 +121,11 @@ function Home(props) {
                      a todos nos ha ido bien."</CardText>
                 
                 </CardBody>
-                <CardTitle>Katherine Bravo</CardTitle>
+                <CardTitle><h5>Katherine Bravo</h5></CardTitle>
                 <CardSubtitle>Cliente frecuente</CardSubtitle>
        
             </Card>
-            </div>
-            <div className="col-12 col-md-4 mt-2">
+
             <Card  >
               
                 <CardBody>
@@ -135,12 +135,12 @@ function Home(props) {
                     y hasta ahora no he tenido problemas, muy buena calidad y gran
                      variedad de monturas, los recomiendo.</CardText>
                 </CardBody>
-                <CardTitle>Juan Pablo Vargas</CardTitle>
+                <CardTitle><h5>Juan Pablo Vargas</h5> </CardTitle>
                 <CardSubtitle>Cliente frecuente</CardSubtitle>
          
             </Card>
-            </div>
-            </CardGroup>
+        
+            </CardDeck>
 
             </div>
         </div>
@@ -150,17 +150,8 @@ function Home(props) {
       
             <Button>CONOCE MÁS</Button>
         </div>
-  
-    
-  
 
-
- 
- </body>
-
-
-
-    
+ </body>   
     );
 }
 

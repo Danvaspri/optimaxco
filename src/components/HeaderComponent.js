@@ -36,13 +36,10 @@ class Header extends Component {
                                 <NavLink className="nav-link "  to='/home'> INICIO</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link " to='/aboutus'> SERVICIOS</NavLink>
+                                <NavLink className="nav-link " to='/services'> SERVICIOS</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link"  to='/menu'> MONTURAS</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link" to='/aboutus'> SOBRE NOSOTROS</NavLink>
+                                <NavLink className="nav-link" to='/about'> SOBRE NOSOTROS</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/contactus'> CONTACTO</NavLink>

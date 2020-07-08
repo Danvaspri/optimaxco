@@ -88,6 +88,7 @@ address{
     text-align: center;
   }
   
+  
   .row button{
     background: #23a455 ;
     color:white;
@@ -123,4 +124,14 @@ address{
     background-color: #23a455;
     border: transparent 0px;
 
+  }  
+  card cardtittle{
+    font-weight: 300;
+    font-size: larger;
+
+
   }
+  #map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+   }

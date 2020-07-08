@@ -4,6 +4,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
+import About from './AboutComponent';
+import Services from './ServicesComponent'
 
 
 
@@ -25,6 +27,17 @@ class Main extends Component {
           />
       );
     }
+    const ServicePage=()=>{
+      return(
+        <Services/>
+      )
+    }
+    const AboutPage=()=>{
+      return(
+        <About/>
+      )
+    }
+
 
   
     return (
@@ -32,7 +45,11 @@ class Main extends Component {
       <Header/>
       <Switch>
               <Route path='/home' component={HomePage} />
+              <Route exact path='/services' component={ServicePage}/>
+              <Route exact path='/about' component={AboutPage}/>
               <Redirect to="/home" />
+         
+           
           </Switch>
           <Footer/>
       </div>
