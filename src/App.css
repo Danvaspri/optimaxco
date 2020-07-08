@@ -60,7 +60,7 @@ address{
   color:white;
   font-family: inherit;
   font-size: 3.3em;
-  padding-top: 35%;
+  padding-top:450px;
   text-align: center;
   align-self: center;
   font-weight: bold;
@@ -71,17 +71,18 @@ address{
   }
   .bgGreen h1{
     color:white !important;
-    margin-left: 10%;
-    text-align: left !important;
+  
+    text-align: center !important;
 
   }
   .bgGreen p{
     color: rgb(61, 61, 61) ;
-    margin-right: 15%;
+   
     text-align: center !important;
     
   }
   .row h1{
+   
     color:#23A455;
     padding: 1em 0px 1em 1em;
     text-align: center;
@@ -91,4 +92,35 @@ address{
     background: #23a455 ;
     color:white;
     border-color: transparent;
+  }
+  .container tittle{
+    font-size: 3.5em;
+    font-weight: 650;
+    padding-top: 4em;
+    text-align: center;
+    color:#23A455;
+
+  }
+  .bgDark{
+    color:white;
+    background-color: #18191d;
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 4em;
+  }
+  .bgDark h1{
+    font-size: 3em;
+    font-weight: 700;
+
+  }
+  .bgDark p{
+    font-size: 1.2em;
+    font-weight: 400;
+    font-stretch: expanded;
+  }
+  .bgDark button{
+    font-size: 0.9em;
+    background-color: #23a455;
+    border: transparent 0px;
+
   }
