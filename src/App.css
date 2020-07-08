@@ -65,12 +65,30 @@ address{
   align-self: center;
   font-weight: bold;
   }
+  .bgGreen{
+    background-color: #61CE70;
+    
+  }
+  .bgGreen h1{
+    color:white !important;
+    margin-left: 10%;
+    text-align: left !important;
+
+  }
+  .bgGreen p{
+    color: rgb(61, 61, 61) ;
+    margin-right: 15%;
+    text-align: center !important;
+    
+  }
   .row h1{
     color:#23A455;
     padding: 1em 0px 1em 1em;
+    text-align: center;
   }
   
-  .card button{
+  .row button{
     background: #23a455 ;
     color:white;
+    border-color: transparent;
   }
