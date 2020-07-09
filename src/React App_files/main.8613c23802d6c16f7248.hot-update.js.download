@@ -1,0 +1,15 @@
+webpackHotUpdate("main",{
+
+/***/ "./src/edits-32.JPG":
+/*!**************************!*\
+  !*** ./src/edits-32.JPG ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "static/media/edits-32.9ed0aedb.JPG";
+
+/***/ })
+
+})
+//# sourceMappingURL=main.8613c23802d6c16f7248.hot-update.js.map
