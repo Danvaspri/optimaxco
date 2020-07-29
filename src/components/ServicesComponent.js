@@ -2,9 +2,9 @@ import React from 'react';
 import {
     Media,Button
   } from 'reactstrap';
-import gafas from '../gafas.jpg'
-import lentes from '../lentes.jpg'
-import inge from '../inge.jpg'
+import gafas from '../images/gafas.jpg'
+import lentes from '../images/lentes.jpg'
+import inge from '../images/inge.jpg'
 function Services(props) {
 return(
 <body>
