@@ -4,7 +4,7 @@ import {
     CardTitle, CardSubtitle,  CardGroup, CardFooter,  CardDeck
   } from 'reactstrap';
 
-  import optimax from 'https://raw.githubusercontent.com/Danvaspri/optimaxco/master/src/images/edits-32.JPG'
+  import optimax from '../images/edits-32.JPG'
 function About(props) {
 return(
 <body>
