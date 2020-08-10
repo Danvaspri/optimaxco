@@ -4,7 +4,7 @@ import {
     CardTitle, CardSubtitle,  CardGroup, CardFooter,  CardDeck
   } from 'reactstrap';
 
-  import optimax from '../images/edits-32.JPG'
+ 
 function About(props) {
 return(
 <body>
@@ -44,7 +44,7 @@ y para cada presupuesto. "</h1>
         
   
     <div className=" banner">
-    <img src={optimax} alt="optimax-1" />
+    <img src='assets/images/RoundGlasses.JPG' alt="optimax-1" />
     <div className="content align-self-center">
         <div className="row  ">
             <div className="  textwhite ">

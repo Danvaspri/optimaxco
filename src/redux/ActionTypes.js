@@ -1,0 +1,7 @@
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const GLASSES_LOADING = 'GLASSES_LOADING';
+export const GLASSES_FAILED = 'GLASSES_FAILED';
+export const ADD_GLASSES = 'ADD_GLASSES';
+export const ADD_COMMENTS = 'ADD_COMMENTS';
+export const COMMENTS_FAILED = 'COMMENTS_FAILED';
+export const ADD_FEEDBACK = 'ADD_FEEDBACK';

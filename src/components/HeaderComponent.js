@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -39,10 +39,19 @@ class Header extends Component {
                                 <NavLink className="nav-link " to='/services'> SERVICIOS</NavLink>
                             </NavItem>
                             <NavItem>
+                                <NavLink className="nav-link" to='/glasses'> MONTURAS</NavLink>
+                            </NavItem>
+                            <NavItem>
                                 <NavLink className="nav-link" to='/about'> SOBRE NOSOTROS</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink className="nav-link" to='/contactus'> CONTACTO</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to='/signin'> <a className="fa fa-sign-in"></a></NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink className="nav-link" to='/cart'> <a className="fa fa-cart-plus"></a></NavLink>
                             </NavItem>
                           
                             </Nav>
