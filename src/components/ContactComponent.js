@@ -218,6 +218,6 @@ export class Contact extends Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyCkpkkmeGkRg2EcNERVVVBQwU2MQOXfBRY'
+    apiKey: YOUR_API_KEY
   })(Contact)
   
