@@ -44,7 +44,7 @@ y para cada presupuesto. "</h1>
         
   
     <div className=" banner">
-    <img src='assets/images/RoundGlasses.JPG' alt="optimax-1" />
+    <img src='https://firebasestorage.googleapis.com/v0/b/optimaxserver-a6107.appspot.com/o/images%2FRoundGlasses.JPG?alt=media&token=0ed973f0-6396-4572-887b-99ff80b6719c' alt="round glasses" />
     <div className="content align-self-center">
         <div className="row  ">
             <div className="  textwhite ">
@@ -82,6 +82,46 @@ y para cada presupuesto. "</h1>
         </div>
     </div>
     </div>
+    <div className="container">
+        <div className="row row-content text-center">
+            <div className="col-12">       
+                    <h1> Servicios</h1>
+            </div>
+            <div className="row">    
+                <img src= 'https://firebasestorage.googleapis.com/v0/b/optimaxserver-a6107.appspot.com/o/images%2FtwoGlasses.jpg?alt=media&token=d3ba0b32-3263-4da7-adc1-803f2b7acca3' className="col-12 col-md-6" alt="Gafas de optimax" />
+                <div className="pt-5 ml-md-auto col-12 align-self-center col-md-5">
+                    <h4 >Venta de monturas</h4>
+                    <p >Si necesitas nuevas monturas puedes elegir entre 
+                        gran variedad de marcas y estilos. En caso de que se
+                        te haga difícil escoger
+                        entre tantas posibilidades, ¡ven a nuestro local y te
+                        asesoraremos para que quedes satisfecho/a!</p>
+                    <Button>Mira nuestros diseños</Button>
+                </div>
+            </div>
+            <div className="row">
+                    <div className="pt-5 ml-md-auto col-12 align-self-center col-md-5">
+                        <h4 >Venta de lentes medicados</h4>
+                        <p >Elaboramos tus fórmulas con la mejor calidad y las
+                             mejores marcas en lentes monofocales, bifocales, 
+                             progresivos, lentes para descanso fotocromáticos,
+                              y transitions.
+                            También manejamos lentes progresivos y con bloqueador azul.</p>
+                    </div>
+                    <img src='https://firebasestorage.googleapis.com/v0/b/optimaxserver-a6107.appspot.com/o/images%2Flentes.jpg?alt=media&token=9cc3d5b9-fe58-4b0f-9572-bb53aa8a56e0' className="col-12 col-md-6" alt="Lentes medicados" />    
+            </div>
+            <div className="row">
+            <img src='https://firebasestorage.googleapis.com/v0/b/optimaxserver-a6107.appspot.com/o/images%2FSquareGlasses.jpg?alt=media&token=b148fa5b-818d-47be-a9f7-d77b6a62c728' className="col-12 col-md-6" alt="gafas de muestra" />  
+                    <div className="pt-5 ml-md-auto col-12 align-self-center col-md-5">
+                        <h4 >Servicio técnico</h4>
+                        <p >Prestamos servicio de reparación y remplazo de piezas para gafas y monturas.</p>
+                    </div>
+                     
+            </div>
+            </div>
+        
+        </div>
+        
     <div className="row row-content bgGreen">
         <div className="row">
 

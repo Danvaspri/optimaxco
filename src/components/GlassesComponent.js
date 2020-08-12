@@ -20,7 +20,7 @@ function RenderGlass({glass}) {
                              exitTransform: 'scale(0.5) translateY(-50%)'
                          }}>
                      <Card>
-                         <CardImg top src={baseUrl + glass.image} alt={glass.name} />
+                         <CardImg top src={ glass.image} alt={glass.name} />
                          <CardBody>
                              <CardTitle>{glass.name}</CardTitle>
                              <CardText>{glass.description}</CardText>
@@ -36,10 +36,10 @@ function RenderGlass({glass}) {
      return (<div></div>)
  }
 }
-function RenderMenuItem ({glass, onClick}) {
+function RenderMenuItem ({glass}) {
   return (
   
-          <Link to={`/glasses/${glass.id}`}>
+          <Link to={`/glasses/${glass._id}`}>
           
           <RenderGlass glass={glass}/>
           </Link>
@@ -50,7 +50,7 @@ const Glasses = (props) => {
 
   const monturas = props.glasses.glasses.map((glass) => {
       return (
-          <div className="col-12 col-md-4"  key={glass.id}>
+          <div className="col-12 col-md-4"  key={glass._id}>
               <RenderMenuItem glass={glass}  />
           </div>
       );

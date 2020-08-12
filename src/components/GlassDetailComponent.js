@@ -15,107 +15,71 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
     const minLength = (len) => (val) => val && (val.length >= len);
 
     class CommentForm extends Component {
+
         constructor(props) {
             super(props);
-            this.state = {
-                inModalOpen:false
-              };
+    
             this.toggleModal = this.toggleModal.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
+            
+            this.state = {
+              isNavOpen: false,
+              isModalOpen: false
+            };
         }
-        
+    
         toggleModal() {
             this.setState({
-                isModalOpen: !this.state.isModalOpen
-              });
+              isModalOpen: !this.state.isModalOpen
+            });
         }
     
         handleSubmit(values) {
-            this.props.postComment(this.props.glassId, values.rating, values.author, values.comment);
-
+            this.toggleModal();
+            this.props.postComment(this.props.glassId, values.rating, values.comment);
         }
-
-        render(){
+    
+        render() {
             return(
-           
-                <div className="container">
-                        <Button outline onClick={this.toggleModal}>
-                                            <span className="fa fa-pencil fa-lg"></span> Submit Comment
-                        </Button>
-                    <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
-                    <ModalBody>
+            <div>
+               
+                <Button outline onClick={this.toggleModal}><span className="fa fa-pencil fa-lg"></span> Submit Comment</Button>
+              
+                 
+               <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
+                <ModalBody>
                     <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-                    <Row className="form-group">
-                        <Label htmlFor="rating" md={2}>Rating</Label>
-                        <Col md={10}>
-                            <Control.select model=".rating" id="rating" name="rating" 
-                                placeholder="Rating" 
-                                className="form-control"
-                                validators={{
-                                    required
-                                }}>    
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>      
-                            </Control.select>        
-                            <Errors
-                                className="text-danger"
-                                model=".rating"
-                                show="touched"
-                                messages={{
-                                    required: 'Required. '
-                                }}
-                            />
-                        </Col>
-                    </Row>
-                    <Row className="form-group">
-                        <Label htmlFor="author" md={2}>Your Name</Label>
-                        <Col md={10}>
-                            <Control.text model=".author" id="author" name="author"
-                                placeholder="Put Your Name Here"
-                                className="form-control"
-                                validators={{
-                                    required, minLength: minLength(3), maxLength: maxLength(15)
-                                }}
-                                />
-                            <Errors
-                                className="text-danger"
-                                model=".author"
-                                show="touched"
-                                messages={{
-                                    required: 'Required. ',
-                                    minLength: 'Must be greater than 2 characters. ',
-                                    maxLength: 'Must be 15 characters or less. '
-                                }}
-                            />
-                        </Col>
-                    </Row>
-                
-                            
-                    <Row className="form-group">
-                        <Label htmlFor="comment" md={2}>Comment</Label>
-                        <Col md={10}>
-                            <Control.textarea model=".comment" id="comment" name="comment"
-                                rows="6"
-                                className="form-control" />
-                        </Col>
-                    </Row>
-                    <Row className="form-group">
-                        <Col md={{size:10, offset: 2}}>
-                            <Button type="submit" color="primary">
+                        <Row className="form-group">
+                            <Col>
+                            <Label htmlFor="rating">Rating</Label>
+                            <Control.select model=".rating" id="rating" className="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </Control.select>
+                            </Col>
+                        </Row>
+                        <Row className="form-group">
+                            <Col>
+                            <Label htmlFor="comment">Comment</Label>
+                            <Control.textarea model=".comment" id="comment"
+                                        rows="6" className="form-control" />
+                            </Col>
+                        </Row>
+                        <Button type="submit" className="bg-primary">
                             Submit
-                            </Button>
-                        </Col>
-                    </Row>
-                </LocalForm>
+                        </Button>
+                    </LocalForm>
                 </ModalBody>
-                </Modal>
+               </Modal>
+            
             </div>
-            )
+            );
         }
+    
     }
             
         
@@ -135,7 +99,7 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
                                     exitTransform: 'scale(0.5) translateY(-50%)'
                                 }}>
                             <Card>
-                                <CardImg top src={baseUrl + glass.image} alt={glass.name} />
+                                <CardImg top src={ glass.image} alt={glass.name} />
                                 <CardBody>
                                     <CardTitle>{glass.name}</CardTitle>
                                     <CardText>{glass.description}</CardText>
@@ -165,9 +129,9 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
                         {comments.map((comment) => {
                             return (
                                 <Fade in>
-                                <li key={comment.id}>
+                                <li key={comment._id}>
                                 <p>{comment.comment}</p>
-                                <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
+                                <p>-{comment.author.name} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comment.updatedAt.toDate())))}</p>
                                 </li>
                                 </Fade>
                             );
@@ -219,7 +183,7 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
                 <div className="row">    
                     <RenderGlass glass={props.glass} />
                     <RenderComments comments={props.comments}
-                            postComment={props.postComment} glassId={props.glass.id}/>    
+                            postComment={props.postComment} glassId={props.glass._id}/>    
                 </div>
             </div>
         ); }

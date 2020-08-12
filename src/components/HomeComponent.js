@@ -3,6 +3,39 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, CardGroup, CardFooter,  CardDeck
   } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+
+function RenderCard({item, isLoading, errMess}) {
+    if (isLoading) {
+        return(
+            <Loading />
+        );
+    }
+    else if (errMess) {
+        return(
+            <h4>{errMess}</h4>
+        );
+    }
+    else
+        return(
+            <FadeTransform in 
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                <Card>
+                    <CardImg src={item.image} alt={item.name} />
+                    <CardBody>
+                        <CardTitle>{item.name}</CardTitle>
+                        {item.designation ? <CardSubtitle>{item.designation}</CardSubtitle> : null}
+                        <CardText>{item.description}</CardText>
+                    </CardBody>
+                </Card>
+            </FadeTransform>
+        );
+}
+
 function Home(props) {
     function changeBorder(e) {
         e.target.style.borderColor = '#61CE70';
@@ -32,7 +65,6 @@ function Home(props) {
                 <CardTitle>Venta de lentes medicados</CardTitle>
                 <CardText>Elaboramos tus formulas con la mejor calidad y las mejores marcas.</CardText>
                 </CardBody>
-                <Button className="mb-5 ml-5 mr-5">CONOCE MÁS</Button>
             </Card>
 
        
@@ -44,7 +76,6 @@ function Home(props) {
                     monturas aquella que se ajuste a tus
                      necesidades y gustos.</CardText>
                 </CardBody>
-              <Button className="mb-5 ml-5 mr-5">CONOCE MÁS</Button>
             </Card>
        
             <Card  onMouseOver={changeBorder} onMouseLeave={changeBack} >
@@ -55,7 +86,6 @@ function Home(props) {
                 <CardText>En Optimax Eyewear prestamos el servicio de reparación y remplazo de piezas para gafas y monturas.</CardText>
                 
                 </CardBody>
-                <Button className="mb-5 ml-5 mr-5">CONOCE MÁS</Button>
             </Card>
             </CardDeck>
           
@@ -68,8 +98,14 @@ function Home(props) {
         <div className="row col-12">
             <h1>Destacados</h1>
         </div>
-        <Button className="btn btn-sm mt-5 mb-5 ml-auto  pt-0 pb-0 col-xs-12 col-md-2 ">Ver todo</Button>
-          
+        <div className="col-12 col-sm-3 m-1">
+                    <RenderCard item={props.glass} 
+                        isLoading={props.glassesLoading}
+                        errMess={props.glassesErrMess} />
+        </div>
+        <div className="col-12">
+        <Button  className="btn btn-sm mt-5 mb-5 ml-auto  pt-3 pb-3 col-xs-12 col-md-2 " href="/glasses" >Ver todo</Button>
+    </div>  
     </div>
     </div>
     <div className="row row-content bgGreen">
@@ -148,7 +184,7 @@ function Home(props) {
             <h1>¿Te interesan nuestros servicios?</h1>
             <p>Te invitamos a conocer más sobre nosotros y lo que hacemos en nuestra óptica.</p>
       
-            <Button>CONOCE MÁS</Button>
+            <Button href="/aboutus">CONOCE MÁS</Button>
         </div>
 
  </body>   
