@@ -1,22 +1,31 @@
 import React from 'react';
-import { Media, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap';
+import { Card, CardImg,CardBody,CardText, 
+    CardTitle, Breadcrumb, BreadcrumbItem, Button, Media} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
+import { FadeTransform} from 'react-animation-components';
 
 function RenderMenuItem({ glass, deleteFavorite }) {
     return(
-        <Media tag="li">
-            <Media left middle>
-                <Media object src={glass.image} alt={glass.name} />
-            </Media>
-            <Media body className="ml-5">
-                <Media heading>{glass.name}</Media>
-                <p>{glass.description}</p>
+        <div className="col-4">
+        <FadeTransform
+            in
+            transformProps={{
+                exitTransform: 'scale(0.5) translateY(-50%)'
+            }}>
+        <Card>
+            <CardImg top src={ glass.image} alt={glass.name} />
+         
+       <CardBody>
+                <CardTitle>{glass.name}</CardTitle>
+                <CardText>{glass.description}</CardText>
                 <Button outline color="danger" onClick={() => deleteFavorite(glass._id)}>
                     <span className="fa fa-times"></span>
                 </Button>
-            </Media>
-        </Media>
+            </CardBody>
+        </Card>
+        </FadeTransform>
+    </div>
     );
 }
 
@@ -42,7 +51,7 @@ const Favorites = (props) => {
     }
     else if (props.favorites.favorites) {
 
-        const favorites = props.favorites.favorites.glass.map((glassId) => {
+        const favorites = props.favorites.favorites.glasses.map((glassId) => {
 
             let glass = props.glasses.glasses.filter((glass) => glass._id === glassId)[0];
             return (

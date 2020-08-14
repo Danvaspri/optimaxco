@@ -10,6 +10,24 @@ export const Auth = (state = {
         errMess: null
     }, action) => {
     switch (action.type) {
+        case ActionTypes.SIGNIN_REQUEST:
+            return {...state,
+                isLoading: true,
+                isAuthenticated: false,
+            };
+        case ActionTypes.SIGNIN_SUCCESS:
+            return {...state,
+                isLoading: false,
+                isAuthenticated: true,
+                errMess: '',
+                user: action.user
+            };
+        case ActionTypes.SIGNIN_FAILURE:
+            return {...state,
+                isLoading: false,
+                isAuthenticated: false,
+                errMess: action.message
+            };
         case ActionTypes.LOGIN_REQUEST:
             return {...state,
                 isLoading: true,

@@ -104,7 +104,6 @@ export const postFeedback = (feedback) => (dispatch) => {
     .then(response => { console.log('Feedback', response); alert('Thank you for your feedback!'); })
     .catch(error =>  { console.log('Feedback', error.message); alert('Your feedback could not be posted\nError: '+error.message); });
 };
-
 export const requestLogin = () => {
     return {
         type: ActionTypes.LOGIN_REQUEST
@@ -129,7 +128,7 @@ export const loginUser = (creds) => (dispatch) => {
     // We dispatch requestLogin to kickoff the call to the API
     dispatch(requestLogin(creds))
 
-    return auth.signInWithEmailAndPassword(creds.username, creds.password)
+    return auth.signInWithEmailAndPassword(creds.email, creds.password)
     .then(() => {
         var user = auth.currentUser;
         localStorage.setItem('user', JSON.stringify(user));
@@ -138,6 +137,45 @@ export const loginUser = (creds) => (dispatch) => {
         dispatch(receiveLogin(user));
     })
     .catch(error => dispatch(loginError(error.message)))
+};
+
+export const requestSignin = () => {
+    return {
+        type: ActionTypes.SIGNIN_REQUEST
+    }
+}
+  
+export const receiveSignin = (user) => {
+    return {
+        type: ActionTypes.SIGNIN_SUCCESS,
+        user
+    }
+}
+  
+export const SigninError = (message) => {
+    return {
+        type: ActionTypes.SIGNIN_FAILURE,
+        message
+    }
+}
+
+export const SigninUser = (creds) => (dispatch) => {
+    // We dispatch requestLogin to kickoff the call to the API
+    dispatch(requestSignin(creds))
+
+    return auth.createUserWithEmailAndPassword( creds.email, creds.password)
+    
+    .then(() => {
+        var user = auth.currentUser;
+        localStorage.setItem('user', JSON.stringify(user));
+        // Dispatch the success action
+        
+        dispatch(fetchFavorites());
+        dispatch(receiveSignin(user));
+    })
+    
+    .catch(error => dispatch(SigninError(error.message)))
+   
 };
 
 export const requestLogout = () => {

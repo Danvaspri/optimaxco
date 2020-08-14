@@ -96,7 +96,7 @@ y para cada presupuesto. "</h1>
                         te haga difícil escoger
                         entre tantas posibilidades, ¡ven a nuestro local y te
                         asesoraremos para que quedes satisfecho/a!</p>
-                    <Button>Mira nuestros diseños</Button>
+                    <Button href="/glasses">Mira nuestros diseños</Button>
                 </div>
             </div>
             <div className="row">

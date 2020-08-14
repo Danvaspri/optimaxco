@@ -3,6 +3,7 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { fetchGlasses } from '../redux/ActionCreators';
 
 class Header extends Component {
 
@@ -10,11 +11,14 @@ class Header extends Component {
         super(props);
         this.state = {
             isNavOpen: false,
-            isModalOpen: false
+            isModalOpen: false,
+            isSigninOpen:false
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.toggleSignin = this.toggleSignin.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.handleSignin = this.handleSignin.bind(this);
         this.handleGoogleLogin = this.handleGoogleLogin.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
     }
@@ -30,10 +34,20 @@ class Header extends Component {
             isModalOpen: !this.state.isModalOpen
         });
     }
+    toggleSignin() {
+        this.setState({
+            isSigninOpen: !this.state.isSigninOpen
+        });
+    }
+    handleSignin(event) {
+        this.toggleSignin();
+        this.props.SigninUser({ email: this.email.value, password: this.password.value});
+        event.preventDefault();
 
+    }
     handleLogin(event) {
         this.toggleModal();
-        this.props.loginUser({username: this.username.value, password: this.password.value});
+        this.props.loginUser({email: this.email.value, password: this.password.value});
         event.preventDefault();
 
     }
@@ -65,6 +79,11 @@ class Header extends Component {
                             <NavItem>
                                 <NavLink className="nav-link" to='/glasses'> MONTURAS</NavLink>
                             </NavItem>
+                            <NavItem>
+                                    <NavLink className="nav-link" to="/favorites">
+                                        <span className="fa fa-heart fa-lg"></span> My Favorites
+                                    </NavLink>
+                                </NavItem>
 
                             <NavItem>
                                 <NavLink className="nav-link" to='/aboutus'> SOBRE NOSOTROS</NavLink>
@@ -107,13 +126,13 @@ class Header extends Component {
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <Button className="col-10 offset-1 mt-2"color="danger" onClick={this.handleGoogleLogin}><span className="fa fa-google fa-lg"></span> Login with Google</Button>
-                  <div className="col-10 align-text-center mt-2"><a>¿Aún no estás registrado? Acá puedes hacerlo</a></div> 
+                <Button className="col-10 offset-1 mt-2" onClick={ this.toggleSignin}>¿Aún no estás registrado? Crea tu cuenta!</Button>
                     <ModalBody>
                         <Form onSubmit={this.handleLogin}>
                             <FormGroup>
-                                <Label htmlFor="username">Nombre</Label>
-                                <Input type="text" id="username" name="username"
-                                    innerRef={(input) => this.username = input} />
+                                <Label htmlFor="email">Email</Label>
+                                <Input type="text" id="email" name="email"
+                                    innerRef={(input) => this.email = input} />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
@@ -128,6 +147,33 @@ class Header extends Component {
                                 </Label>
                             </FormGroup>
                             <Button className="float-right" type="submit" value="submit" color="primary">Login</Button>
+                        </Form>
+                        <p></p>
+                    </ModalBody>
+                </Modal>
+                <Modal isOpen={this.state.isSigninOpen} toggle={this.toggleSignin}>
+                    <ModalHeader toggle={this.toggleSignin}>Sign in</ModalHeader>
+                   <ModalBody>
+                        <Form onSubmit={this.handleSignin}>
+                    
+                            <FormGroup>
+                                <Label htmlFor="email">Email</Label>
+                                <Input type="text" id="email" name="email"
+                                    innerRef={(input) => this.email = input} />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="password">Password</Label>
+                                <Input type="password" id="password" name="password"
+                                    innerRef={(input) => this.password = input}  />
+                            </FormGroup>
+                            <FormGroup check>
+                                <Label check>
+                                    <Input type="checkbox" name="remember"
+                                    innerRef={(input) => this.remember = input}  />
+                                    Remember me
+                                </Label>
+                            </FormGroup>
+                            <Button className="float-right" type="submit" value="submit" color="primary">Sign in</Button>
                         </Form>
                         <p></p>
                     </ModalBody>

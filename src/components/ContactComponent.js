@@ -26,10 +26,7 @@ export class Contact extends Component {
     }
    
     render() {
-        const mapStyles = {
-            width: '100%',
-            height: '100%',
-          };
+   
     
         return(
             <div className="container">
@@ -59,29 +56,33 @@ export class Contact extends Component {
                             </address>
                     </div>
                     <div className="col-12 col-sm-6 offset-sm-1">
-                        <h5>Map of our Location</h5>
+                        <h5>Mapa</h5>
                      
                        <Map className="col-10"
                             google={this.props.google}
                             zoom={14}
-                            
+                           
                             initialCenter={{
-                            lat: -1.2884,
-                            lng: 36.8233
+                            lat:  3.426394,
+                            lng:  -76.528423
                             }}
-                            />
+                            >
+                            <Marker position={{ 
+                                 lat:  3.426394,
+                            lng:  -76.528423}} />
+                          </Map>
                          
                       
                     </div>
                     <div className="col-12 col-sm-11 offset-sm-1">
-                        <div className="btn-group" role="group">
-                           <a role="button" className="btn btn-success" href="https://instagram.com/optimax.eyewear"><i className="fa fa-instagram"></i></a>
-                        </div>
+                    
+                           <a role="button" className="btn btn-success mb-3" href="https://instagram.com/optimax.eyewear"><i className="fa fa-instagram"></i></a>
+                       
                     </div>
                 </div>
                 <div className="row row-content">
                     <div className="col-12">
-                        <h3>Send us Your Feedback</h3>
+                        <h3>Envíanos tu opinión!</h3>
                     </div>
                     <div className="col-12 col-md-9">
                         <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>

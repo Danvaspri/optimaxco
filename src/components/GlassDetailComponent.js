@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody,
     CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody,
-     Label,  Row, Col  } from 'reactstrap';
+     Label,  Row, Col, CardImgOverlay  } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
-
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
-    const required = (val) => val && val.length;
-    const maxLength = (len) => (val) => !(val) || (val.length <= len);
-    const minLength = (len) => (val) => val && (val.length >= len);
+
 
     class CommentForm extends Component {
 
@@ -85,7 +81,7 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
         
               
 
-    function RenderGlass({glass}) {
+    function RenderGlass({glass, favorite, postFavorite}) {
     
     
          if (glass!= null) {
@@ -100,6 +96,15 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
                                 }}>
                             <Card>
                                 <CardImg top src={ glass.image} alt={glass.name} />
+                                <CardImgOverlay>
+                                <Button outline color="primary" onClick={() => favorite ? console.log('Already favorite') : postFavorite(glass._id)}>
+                                    {favorite ?
+                                        <span className="fa fa-heart"></span>
+                                        : 
+                                        <span className="fa fa-heart-o"></span>
+                                    }
+                                </Button>
+                            </CardImgOverlay>
                                 <CardBody>
                                     <CardTitle>{glass.name}</CardTitle>
                                     <CardText>{glass.description}</CardText>
@@ -181,7 +186,7 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
                     <hr/>
                 </div>                
                 <div className="row">    
-                    <RenderGlass glass={props.glass} />
+                    <RenderGlass glass={props.glass} favorite={props.favorite} postFavorite={props.postFavorite}/>
                     <RenderComments comments={props.comments}
                             postComment={props.postComment} glassId={props.glass._id}/>    
                 </div>

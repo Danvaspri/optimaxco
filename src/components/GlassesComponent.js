@@ -1,9 +1,8 @@
 import React from 'react';
 import { Card, CardImg,CardBody,CardText, CardImgOverlay,
-    CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+    CardTitle, Breadcrumb, BreadcrumbItem, Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 function RenderGlass({glass}) {
@@ -21,7 +20,8 @@ function RenderGlass({glass}) {
                          }}>
                      <Card>
                          <CardImg top src={ glass.image} alt={glass.name} />
-                         <CardBody>
+                      
+                    <CardBody>
                              <CardTitle>{glass.name}</CardTitle>
                              <CardText>{glass.description}</CardText>
                          </CardBody>
@@ -41,7 +41,8 @@ function RenderMenuItem ({glass}) {
   
           <Link to={`/glasses/${glass._id}`}>
           
-          <RenderGlass glass={glass}/>
+          <RenderGlass glass={glass} />
+                
           </Link>
     
   );

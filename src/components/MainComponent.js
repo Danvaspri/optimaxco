@@ -11,7 +11,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment, postFeedback, fetchGlasses, fetchComments, loginUser, logoutUser, fetchFavorites, googleLogin, postFavorite, deleteFavorite } from '../redux/ActionCreators';
+import { postComment, postFeedback, fetchGlasses, fetchComments,SigninUser, loginUser, logoutUser, fetchFavorites, googleLogin, postFavorite, deleteFavorite } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -35,6 +35,7 @@ const mapDispatchToProps = dispatch => ({
   fetchComments: () => dispatch(fetchComments()),
   postFeedback: (feedback) => dispatch(postFeedback(feedback)),
   loginUser: (creds) => dispatch(loginUser(creds)),
+  SigninUser: (creds) => dispatch(SigninUser(creds)),
   logoutUser: () => dispatch(logoutUser()),
   fetchFavorites: () => dispatch(fetchFavorites()),
   googleLogin: () => dispatch(googleLogin()),
@@ -117,6 +118,7 @@ class Main extends Component {
       <div>
         <Header auth={this.props.auth} 
           loginUser={this.props.loginUser} 
+          SigninUser={this.props.SigninUser}
           logoutUser={this.props.logoutUser}
           googleLogin={this.props.googleLogin}
           />   
@@ -126,7 +128,9 @@ class Main extends Component {
               <Route path="/home" component={HomePage} />
               <Route exact path='/aboutus' component={AboutPage}/>
               <Route exact path="/contactus" component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />
-              <Route exact path="/glasses" component={() => <GlassComponent glasses={this.props.glasses} />} />
+              <PrivateRoute exact path="/favorites" component={() => <Favorites favorites={this.props.favorites} glasses={this.props.glasses} deleteFavorite={this.props.deleteFavorite} />} />
+            
+              <Route exact path="/glasses" component={() => <GlassComponent glasses={this.props.glasses}  />} />
               <Route path="/glasses/:glassId" component={(GlassWithId)} />
               <PrivateRoute exact path="/favorites" component={() => <Favorites favorites={this.props.favorites} glasses={this.props.glasses} deleteFavorite={this.props.deleteFavorite} />} />
              <Redirect to="/home" />
